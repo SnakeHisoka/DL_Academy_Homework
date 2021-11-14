@@ -5,19 +5,16 @@ __author__ = 'Арапов Виктор Александрович'
 # "Василий на 2 года/лет больше 18"
 # по желанию сделать адаптивный вывод, то есть "на 5 лет больше", "на 3 года меньше" и.т.д.
 
-name = str(input('wts yr name?'))
-age = int(input('wts is yr age?'))
-
+name = str(input('wts yr name? '))
+age = int(input('wts is yr age? '))
 if age > 18:
- bolshe = age - 18
- print (name, ' на', bolshe, "года/лет больше 18" )
-else:
- if age < 18:
-  menshe = (age - 18)
-  print (name, ' на', menshe, "года/лет меньше 18" )
- else:
-  if age == 18:
-   print (name, 'тебе ровно', age, "лет" )
+   bolshe = age - 18
+   print (name,' на',bolshe,'года/лет больше 18')
+elif age < 18:
+   menshe = (age - 18)
+   print (name,' на',-menshe,'года/лет меньше 18')   
+elif age == 18:
+   print (name,'тебе ровно',age,'лет')
    
 
 # Задача-2: Исходные значения двух переменных запросить у пользователя.
@@ -28,7 +25,17 @@ else:
 # Не нужно решать задачу так:
 # print("a = ", b, "b = ", a) - это неправильное решение!
 
-# TODO: код пишем тут...
+a=int(input('\nвведите первую переменную '))
+b=int(input('введите вторую переменную '))
+import time
+c=3
+while c>0:
+    print('переменные поменяются через: ',c,' сек.')
+    time.sleep(1)
+    c=c-1
+a, b = b, a
+print('Результат:\nПервая перменная =',a, '\nвторая переменная =',b)
+
 
 # Задача-3: Напишите программу, вычисляющую корни квадратного уравнения вида
 # ax² + bx + c = 0.
@@ -37,4 +44,20 @@ else:
 # import math
 # math.sqrt(4) - вычисляет корень числа 4
 
-# TODO: код пишем тут...
+import math
+print('\nВведите коэффициенты для уравнения')
+print('ax^2 + bx + c = 0:')
+a = float(input("a = "))
+b = float(input("b = "))
+c = float(input("c = "))
+d = b ** 2 - 4 * a * c
+print('Дискриминант D = %.2f' % d)
+if d > 0:
+    x1 = (-b + math.sqrt(d)) / (2 * a)
+    x2 = (-b - math.sqrt(d)) / (2 * a)
+    print('x1 = %.2f \nx2 = %.2f' % (x1, x2))
+elif d == 0:
+    x = -b / (2 * a)
+    print('x = %.2f' % x)
+else:
+    print('Корней нет')
