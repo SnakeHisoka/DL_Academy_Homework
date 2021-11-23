@@ -5,6 +5,35 @@ equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
 
+equation = 'y = -12x + 11111140.2121'
+x = 2.5
+y = 0
+number =''
+stack =[]
+right_part =''
+for index, symbol in enumerate(equation):
+    if symbol == '=':
+        right_part = equation[(index+1):]
+        break
+
+right_part = right_part.replace(' ','')
+
+for symbol in right_part:
+    if symbol in '-+1234567890.':
+        number += symbol
+    elif number:
+        stack.append(float(number))
+        number =''
+        if symbol == 'x':
+            stack[-1] = x*stack[-1]
+if number:
+    stack.append(float(number))
+
+for number in stack:
+    y = y + number
+
+print('y = ', y)
+
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
@@ -23,6 +52,39 @@ date = '01.11.1985'
 date = '01.22.1001'
 date = '1.12.1001'
 date = '-2.10.3001'
+
+answer = ''
+while answer != 'n':
+    answer = input('Приступим y/n: ')
+    if answer == 'y':
+        date = input('Введите дату в формате dd.mm.yyyy:')
+        if len(date) == 10:
+            dd, mm, yyyy = date.split('.')
+            if len(dd)==2 and len(mm)==2 and len(yyyy)==4:
+                if dd.isdigit() and mm.isdigit() and yyyy.isdigit():
+                    if (1<= int(dd) <=31) and (1<= int(mm) <=12) and (1<= int(yyyy) <=9999):
+                      if dd == '31' and (mm in ['01', '03', '05', '07', '08', '10', '12']):
+                          print('Дата: ', date)
+                      elif int(dd)< 31:
+                          print('Дата: ', date)
+                      else:
+                        print('Неверно указали день')
+                        continue
+
+                    else:
+                        print('Неверно указали день')
+                        continue
+                else:
+                    print('Вы ввели в неправильном формате: ')
+                    continue
+            else:
+                print('Вы ввели в неправильном формате: ')
+                continue
+        elif len(date)<10:
+            print('Вы ввели мало цифр')
+        elif len(date)>10:
+            print('Вы ввели слишком много цифр')
+print('Пока')
 
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
