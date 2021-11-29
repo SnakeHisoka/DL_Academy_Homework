@@ -4,7 +4,11 @@
 matrix = [[1, 0, 8],
           [3, 4, 1],
           [0, 4, 2]]
-          
+
+print("matrix:")        
+for line in matrix:
+    print(line)          
+
 # Выполнить поворот (транспонирование) матрицы
 # Пример. Результат:
 # matrix_rotate = [[1, 3, 0],
@@ -13,6 +17,11 @@ matrix = [[1, 0, 8],
 
 # Суть сложности hard: Решите задачу в одну строку
 
+rotate_matrix = list(map(list, zip(*matrix)))
+
+print("rotate_matrix:")   
+for line in rotate_matrix:
+    print(line)
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 # Задание-2:
@@ -41,16 +50,20 @@ number = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
 
-answer = 0
+import re
 
-for x in range(0, len(number) - 13):
-    tmp = int(number[x])
-    for y in range(1, 13):
-        tmp *= int(number[x + y])
-    if tmp > answer:
-        answer = tmp
+number = re.sub("\n", '', number)
 
-print(answer)
+list_number = []
+
+for i in range(0, len(number)-4):
+    num_from_5 = list((number)[i:i+5])
+    num = 1
+    for x in num_from_5:
+        num *= int(x)
+    list_number.append(num)
+
+print("Наибольшее произведение пяти последовательных цифр = {}".format(max(list_number)))
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------

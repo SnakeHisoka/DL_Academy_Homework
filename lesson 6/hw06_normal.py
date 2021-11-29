@@ -13,13 +13,21 @@ def avg(a, b):
     Результат:
         - float.
     """
-    return (a * b) ** 0.5
+try:
+    a = float(input("a = "))
+    b = float(input("b = "))
+except ValueError:
+    print('Введите число!')
+try:
+    c = avg(a, b)
+except NameError:
+    print('Вы ввели не числа')
+try:
+    print("Среднее геометрическое = {:.2f}".format(c))
+except NameError:
+    print('Функция работает только с числами')
 
-
-a = float(input("a = "))
-b = float(input("b = "))
-c = avg(a, b)
-print("Среднее геометрическое = {:.2f}".format(c))
+print('\n')
 
 # ПРИМЕЧАНИЕ: Для решения задачи 2-3 необходимо познакомиться с модулями os, sys!
 # СМ.: https://pythonworld.ru/moduli/modul-os.html, https://pythonworld.ru/moduli/modul-sys.html
@@ -42,3 +50,12 @@ print("Среднее геометрическое = {:.2f}".format(c))
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
 
+def utility():
+    while True:
+        print('Я могу:')
+        print('1. Перейти в папку')
+        print('2. Просмотреть содержимое текущей папки')
+        print('3. Удалить папку')
+        print('4. Создать папку')
+
+        zapros = input('Выбирите действие - ')
