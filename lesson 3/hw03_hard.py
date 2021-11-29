@@ -116,3 +116,20 @@ print('Пока')
 #
 # Вход: 11
 # Выход: 5 3
+
+kvartira = int(input('Введите номер квартиры: '))
+
+quadr = 1
+etaj = 0
+
+while kvartira > quadr * quadr:
+    kvartira = kvartira - quadr * quadr
+    etaj += quadr
+    quadr += 1
+
+while kvartira > quadr:
+    kvartira -= quadr
+    etaj += 1
+
+print('Этаж -',etaj + 1)
+print('Квартира слева -',kvartira)
